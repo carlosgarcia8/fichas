@@ -53,4 +53,3 @@ insert into public.reparto (ficha_id, persona_id)
            (3, 2),
            (4, 3),
            (5, 10);
-
