@@ -9,11 +9,24 @@ use yii\widgets\ActiveForm;
 ?>
 <div class="fichas-gestionar">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+            'method' => 'get',
+            'action' => ['fichas/gestionar'],
+        ]); ?>
 
-        <?= $form->field($model, 'titulo') ?>
-        <?= $form->field($model, 'nombre') ?>
-    
+        <?= $form->field($model, 'ficha_id')->dropDownList($fichas) ?>
+        <?php if (!empty($reparto)) {
+            ?>
+            <?= $form->field($model, 'persona_id')->dropDownList($personas) ?>
+        <?php
+
+        } ?>
+        <?php if (!empty($personas)) {
+            ?>
+            <?= $form->field($model, 'persona_id')->dropDownList($personas) ?>
+        <?php
+
+        } ?>
         <div class="form-group">
             <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
         </div>

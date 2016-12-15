@@ -13,24 +13,23 @@ use yii\base\Model;
  */
 class FichaForm extends Model
 {
-    public $titulo;
-    public $nombre;
+    public $ficha_id;
+    public $persona_id;
 
     public function rules()
     {
         return [
-            [['titulo'], 'required'],
-            [['titulo'], 'string', 'max' => 50],
-            [['nombre'], 'string', 'max' => 100],
-            [['nombre'], 'exist',
+
+            [['ficha_id', 'persona_id'], 'number'],
+            [['persona_id'], 'exist',
                 'skipOnError' => true,
                 'targetClass' => Persona::className(),
-                'filter' => ['ilike', 'nombre', 'nombre'],
+                'targetAttribute' => ['persona_id' => 'id'],
             ],
-            [['titulo'], 'exist',
+            [['ficha_id'], 'exist',
                 'skipOnError' => true,
                 'targetClass' => Ficha::className(),
-                'filter' => ['ilike','titulo', 'titulo'],
+                'targetAttribute' => ['ficha_id' => 'id'],
             ],
         ];
     }
@@ -38,8 +37,13 @@ class FichaForm extends Model
     public function attributeLabels()
     {
         return [
-            'titulo' => 'Titulo de la película',
-            'nombre' => 'Nombre del actor/actriz',
+            'ficha_id' => 'Titulo de la película',
+            'persona_id' => 'Nombre del actor/actriz',
         ];
+    }
+
+    public function formName()
+    {
+        return '';
     }
 }
