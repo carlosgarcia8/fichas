@@ -33,8 +33,8 @@ class Ficha extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'titulo', 'director_id'], 'required'],
-            [['id', 'duracion', 'director_id'], 'integer'],
+            [['titulo', 'director_id'], 'required'],
+            [['duracion', 'director_id'], 'integer'],
             [['anyo'], 'number'],
             [['titulo'], 'string', 'max' => 50],
             [['director_id'], 'exist', 'skipOnError' => true, 'targetClass' => Persona::className(), 'targetAttribute' => ['director_id' => 'id']],
@@ -51,7 +51,7 @@ class Ficha extends \yii\db\ActiveRecord
             'titulo' => 'Titulo',
             'anyo' => 'Anyo',
             'duracion' => 'Duracion',
-            'director_id' => 'Director ID',
+            'director_id' => 'Nombre Director',
         ];
     }
 

@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="ficha-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]);?>
 
     <p>
         <?= Html::a('Create Ficha', ['create'], ['class' => 'btn btn-success']) ?>
@@ -24,11 +24,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'titulo',
             'anyo',
             'duracion',
-            'director_id',
+            [
+                'attribute' => 'director',
+                'value' => 'director.nombre',
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

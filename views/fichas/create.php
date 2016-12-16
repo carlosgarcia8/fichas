@@ -2,11 +2,10 @@
 
 use yii\helpers\Html;
 
-
 /* @var $this yii\web\View */
 /* @var $model app\models\Ficha */
 
-$this->title = 'Create Ficha';
+$this->title = 'Crear Ficha';
 $this->params['breadcrumbs'][] = ['label' => 'Fichas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -16,6 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'personas' => $personas,
     ]) ?>
 
 </div>
